@@ -427,7 +427,7 @@ grep -v -f discordant_sex.txt penultimate_passing_samples.txt > Final_list_of_pa
 final_num=$(wc -l Final_list_of_passing_samples.txt | awk '{print $1}')
 echo "Samples with Matching Sex:" $final_num >> Sample_QC_Passing_by_Step.txt
 
-# list of samples which pass QC: /project/6007512/shared/C3G/projects/Miranda_Summer/test_pipeline/post_gvcf_pipeline/Samples_passing_QC.list
+# list of samples which pass QC: Samples_passing_QC.list
 sed '1d' Final_list_of_passing_samples.txt > passing_samples.txt
 
 # filter:
