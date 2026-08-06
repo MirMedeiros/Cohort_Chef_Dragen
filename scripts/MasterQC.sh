@@ -137,7 +137,7 @@ if [[ -z "$CLEAN_SEX" || "$clinical_sex_file_with_path" == "NONE" ]]; then
 
 
     ## RUN THIS SCRIPT WITH NO SEX INPUT
-    JOB1_OUT=$(sbatch --account=$RAP_ID no_clinical_Sample_lvl_QC.sh  "$joint_called_vcf" "$output_dir" "$Genome_build" "$list_of_bam_cram")
+    JOB1_OUT=$(sbatch --account=$RAP_ID no_clinical_Sample_lvl_QC.sh  "$joint_called_vcf" "$output_dir" "$Genome_build" "$list_of_bam_crams")
     JOB1_ID=$(echo "$JOB1_OUT" | awk '{print $4}')
 
     echo "    "
@@ -148,7 +148,7 @@ else
     # Run job 1 with sex check and  wait for it to finish before running job 2:
     ## START JOB 1: FULL SAMPLE QC
     # (We capture the submission output and use awk or cut to extract just the numeric Job ID)
-    JOB1_OUT=$(sbatch --account=$RAP_ID Sample_lvl_QC.sh "$joint_called_vcf" "$clinical_sex_file_with_path" "$output_dir" "$Genome_build" "$list_of_bam_cram")
+    JOB1_OUT=$(sbatch --account=$RAP_ID Sample_lvl_QC.sh "$joint_called_vcf" "$clinical_sex_file_with_path" "$output_dir" "$Genome_build" "$list_of_bam_crams")
     JOB1_ID=$(echo "$JOB1_OUT" | awk '{print $4}')
 
     echo "    "
